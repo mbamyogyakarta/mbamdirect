@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DASHBOARD DATA MBAM</title>
+    <link rel="icon" href="https://logotyp.us/file/bri.svg" type="image/svg+xml">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,10 +29,11 @@
             text-decoration: none;
             border-radius: 5px;
             margin: 8px;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
         .button:hover {
             background-color: #0056b3;
+            transform: scale(1.05);
         }
         ul {
             list-style-type: none;
@@ -45,6 +47,16 @@
             font-size: 14px;
             color: red;
             font-weight: bold;
+        }
+        .password-section {
+            display: none;
+            margin-top: 10px;
+        }
+        input[type="password"] {
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+            margin-top: 10px;
         }
         @media (max-width: 600px) {
             .container {
@@ -65,10 +77,48 @@
         <h1>DASHBOARD DATA MBAM</h1>
         <p>Pilih data yang tersedia:</p>
         <ul>
-		<li><a class="button" href="https://drive.google.com/drive/folders/1T7yqShzeR2pT5B9RY5b7M82GPAjjuUcp?usp=sharing" target="_blank" rel="noopener noreferrer">LW321 31 MARET 2025</a></li>
-		<li><a class="button" href="https://drive.google.com/drive/folders/1C_tI21dqTYKMoqYASEme2g1tQQGE9gy9?usp=sharing" target="_blank" rel="noopener noreferrer">DATA KEKURANGAN KLAIM APRIL 2025 (ASKRINDO & JAMKRINDO)</a></li>
-		</ul>
+            <li>
+                <a class="button" href="https://drive.google.com/drive/folders/1T7yqShzeR2pT5B9RY5b7M82GPAjjuUcp?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    LW321 31 MARET 2025
+                </a>
+            </li>
+            <li>
+                <a class="button" href="https://drive.google.com/drive/folders/1C_tI21dqTYKMoqYASEme2g1tQQGE9gy9?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    DATA KEKURANGAN KLAIM APRIL 2025 (ASKRINDO & JAMKRINDO)
+                </a>
+            </li>
+            <li>
+                <button class="button" onclick="togglePassword('sectionMantri')">DATA MANTRI BELUM REAL</button>
+                <div id="sectionMantri" class="password-section">
+                    <input type="password" id="passwordMantri" placeholder="🔒 Masukkan password untuk membuka data">
+                    <br>
+                    <button class="button" onclick="checkPassword('passwordMantri', 'https://docs.google.com/spreadsheets/d/14WmhLXjf01rYnEBeiTBrUI0QfD389ie_Fqp20wekXdk/edit?usp=sharing', 'MANTRI')">Akses</button>
+                </div>
+            </li>
+        </ul>
         <p class="footer">⚠️ Perhatian: Data ini bersifat INTERNAL dan tidak untuk dibagikan ke pihak luar.</p>
     </div>
+
+    <script>
+        function togglePassword(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.style.display = 'block';
+            section.querySelector('input[type="password"]').focus();
+        }
+
+        function checkPassword(inputId, link, label) {
+            const input = document.getElementById(inputId).value;
+            const passwords = {
+                MANTRI: "MBAM"
+            };
+
+            if (input === passwords[label]) {
+                window.open(link, '_blank');
+            } else {
+                alert("Password salah. Silakan coba lagi.");
+                document.getElementById(inputId).value = '';
+            }
+        }
+    </script>
 </body>
 </html>
