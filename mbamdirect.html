@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DASHBOARD DATA MBAM</title>
     <link rel="icon" href="https://logotyp.us/file/bri.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
             text-align: center;
             padding: 20px;
             background-color: #f4f4f4;
+            font-size: 16px;
+            color: #333;
         }
         .container {
             max-width: 600px;
@@ -19,6 +23,22 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            font-size: 16px;
+        }
+        li {
+            margin: 12px 0;
         }
         .button {
             display: inline-block;
@@ -30,17 +50,15 @@
             border-radius: 5px;
             margin: 8px;
             transition: background 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .button i {
+            margin-right: 8px;
         }
         .button:hover {
             background-color: #0056b3;
             transform: scale(1.05);
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin: 12px 0;
         }
         .footer {
             margin-top: 20px;
@@ -51,6 +69,11 @@
         .password-section {
             display: none;
             margin-top: 10px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         input[type="password"] {
             padding: 10px;
@@ -79,20 +102,29 @@
         <ul>
             <li>
                 <a class="button" href="https://drive.google.com/drive/folders/1T7yqShzeR2pT5B9RY5b7M82GPAjjuUcp?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    LW321 31 MARET 2025
+                    <i class="fas fa-folder-open"></i> LW321 31 MARET 2025
                 </a>
             </li>
             <li>
                 <a class="button" href="https://drive.google.com/drive/folders/1C_tI21dqTYKMoqYASEme2g1tQQGE9gy9?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    DATA KEKURANGAN KLAIM APRIL 2025 (ASKRINDO & JAMKRINDO)
+                    <i class="fas fa-file-alt"></i> DATA KEKURANGAN KLAIM APRIL 2025
                 </a>
             </li>
             <li>
-                <button class="button" onclick="togglePassword('sectionMantri')">DATA MANTRI BELUM REAL</button>
+                <a class="button" href="https://drive.google.com/drive/folders/1HAIDpybi11PVCfyZDHU3NzPBYjyiyHjD?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-folder-open"></i> PIPELINE OS SD 50%
+                </a>
+            </li>
+            <li>
+                <button class="button" onclick="togglePassword('sectionMantri')">
+                    <i class="fas fa-lock"></i> DATA MANTRI BELUM REAL
+                </button>
                 <div id="sectionMantri" class="password-section">
                     <input type="password" id="passwordMantri" placeholder="🔒 Masukkan password untuk membuka data">
                     <br>
-                    <button class="button" onclick="checkPassword('passwordMantri', 'https://docs.google.com/spreadsheets/d/14WmhLXjf01rYnEBeiTBrUI0QfD389ie_Fqp20wekXdk/edit?usp=sharing', 'MANTRI')">Akses</button>
+                    <button class="button" onclick="checkPassword('passwordMantri', 'https://docs.google.com/spreadsheets/d/14WmhLXjf01rYnEBeiTBrUI0QfD389ie_Fqp20wekXdk/edit?usp=sharing', 'MANTRI')">
+                        <i class="fas fa-unlock"></i> Akses
+                    </button>
                 </div>
             </li>
         </ul>
@@ -102,8 +134,10 @@
     <script>
         function togglePassword(sectionId) {
             const section = document.getElementById(sectionId);
-            section.style.display = 'block';
-            section.querySelector('input[type="password"]').focus();
+            section.style.display = section.style.display === 'block' ? 'none' : 'block';
+            if (section.style.display === 'block') {
+                section.querySelector('input[type="password"]').focus();
+            }
         }
 
         function checkPassword(inputId, link, label) {
@@ -113,9 +147,10 @@
             };
 
             if (input === passwords[label]) {
+                alert("✅ Password benar. Membuka data...");
                 window.open(link, '_blank');
             } else {
-                alert("Password salah. Silakan coba lagi.");
+                alert("❌ Password salah. Silakan coba lagi.");
                 document.getElementById(inputId).value = '';
             }
         }
