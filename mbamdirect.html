@@ -12,34 +12,77 @@
             font-family: 'Poppins', Arial, sans-serif;
             text-align: center;
             padding: 20px;
-            background-color: #f4f4f4;
-            font-size: 16px;
+            background: linear-gradient(135deg, #f0f8ff, #d1e7ff);
+            min-height: 100vh;
+            position: relative;
             color: #333;
+            font-size: 16px;
+            transition: background 0.5s, color 0.5s;
         }
+
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 123, 255, 0.1);
+            filter: blur(120px);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        body::before {
+            top: -100px;
+            left: -100px;
+        }
+
+        body::after {
+            bottom: -100px;
+            right: -100px;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.05;
+            z-index: 0;
+            width: 400px;
+        }
+
         .container {
+            position: relative;
+            z-index: 1;
             max-width: 600px;
             margin: auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
+
         h1 {
             font-size: 28px;
             margin-bottom: 10px;
         }
+
         p {
             font-size: 16px;
             margin-bottom: 15px;
         }
+
         ul {
             list-style-type: none;
             padding: 0;
             font-size: 16px;
         }
+
         li {
             margin: 12px 0;
         }
+
         .button {
             display: inline-block;
             padding: 12px 20px;
@@ -53,34 +96,41 @@
             cursor: pointer;
             border: none;
         }
+
         .button i {
             margin-right: 8px;
         }
+
         .button:hover {
             background-color: #0056b3;
             transform: scale(1.05);
         }
+
         .footer {
             margin-top: 20px;
             font-size: 14px;
             color: red;
             font-weight: bold;
         }
+
         .password-section {
             display: none;
             margin-top: 10px;
             animation: fadeIn 0.3s ease-in-out;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
         input[type="password"] {
             padding: 10px;
             width: 80%;
             font-size: 16px;
             margin-top: 10px;
         }
+
         @media (max-width: 600px) {
             .container {
                 width: 90%;
@@ -95,6 +145,7 @@
     </style>
 </head>
 <body>
+    <img src="https://logotyp.us/file/bri.svg" alt="Watermark BRI" class="watermark">
     <div class="container">
         <img src="https://logotyp.us/file/bri.svg" alt="Logo BRI" width="150">
         <h1>DASHBOARD DATA MBAM</h1>
@@ -112,7 +163,6 @@
                     </button>
                 </div>
             </li>
-
             <li>
                 <a class="button" href="https://drive.google.com/drive/folders/1T7yqShzeR2pT5B9RY5b7M82GPAjjuUcp?usp=sharing" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-folder-open"></i> LW321 31 MARET 2025
