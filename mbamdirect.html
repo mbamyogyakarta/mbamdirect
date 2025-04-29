@@ -101,12 +101,19 @@
         <p>Pilih data yang tersedia:</p>
         <ul>
             <li>
-                <a class="button" href="https://docs.google.com/spreadsheets/d/1lwJoXxiNvkrsZpNQP92Ei7APFApLjNsvav-DwRl09e0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-folder-open"></i> RENCANA AKTIVITAS HARIAN MBM 
-                </a>
+                <button class="button" onclick="togglePassword('sectionRencana')">
+                    <i class="fas fa-lock"></i> RENCANA AKTIVITAS HARIAN MBM
+                </button>
+                <div id="sectionRencana" class="password-section">
+                    <input type="password" id="passwordRencana" placeholder="🔒 Masukkan password untuk membuka data">
+                    <br>
+                    <button class="button" onclick="checkPassword('passwordRencana', 'https://docs.google.com/spreadsheets/d/1lwJoXxiNvkrsZpNQP92Ei7APFApLjNsvav-DwRl09e0/edit?usp=sharing', 'RENCANA')">
+                        <i class="fas fa-unlock"></i> Akses
+                    </button>
+                </div>
             </li>
-		
-			<li>
+
+            <li>
                 <a class="button" href="https://drive.google.com/drive/folders/1T7yqShzeR2pT5B9RY5b7M82GPAjjuUcp?usp=sharing" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-folder-open"></i> LW321 31 MARET 2025
                 </a>
@@ -131,7 +138,7 @@
                     <i class="fas fa-folder-open"></i> TUNGGAKAN PUNYA SIMPANAN HARIAN
                 </a>
             </li>
-			<li>
+            <li>
                 <a class="button" href="https://drive.google.com/drive/folders/1i1yVbQAUfF8TLB9ZQXLMS0ECJWg3-ljG?usp=sharing" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-folder-open"></i> DATA PINJAMAN BELUM AGF & AFT
                 </a>
@@ -164,7 +171,8 @@
         function checkPassword(inputId, link, label) {
             const input = document.getElementById(inputId).value;
             const passwords = {
-                MANTRI: "MBAM"
+                MANTRI: "MBAM",
+                RENCANA: "MBAM"
             };
 
             if (input === passwords[label]) {
