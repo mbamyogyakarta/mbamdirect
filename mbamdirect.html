@@ -32,15 +32,8 @@
       z-index: 0;
     }
 
-    body::before {
-      top: -100px;
-      left: -100px;
-    }
-
-    body::after {
-      bottom: -100px;
-      right: -100px;
-    }
+    body::before { top: -100px; left: -100px; }
+    body::after { bottom: -100px; right: -100px; }
 
     .watermark {
       position: fixed;
@@ -64,64 +57,43 @@
       backdrop-filter: blur(10px);
     }
 
-    h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
+    h1 { font-size: 28px; margin-bottom: 10px; }
+    p { font-size: 16px; margin-bottom: 15px; }
 
     ul {
       list-style-type: none;
       padding: 0;
       font-size: 16px;
+      max-width: 500px;
+      margin: 0 auto;
     }
 
-    li {
-      margin: 12px 0;
-    }
+    li { margin: 12px 0; }
 
     .button {
-  display: block;
-  width: 100%;
-  padding: 12px 20px;
-  font-size: 16px;
-  color: white;
-  background-color: #0056b3;
-  text-decoration: none;
-  border-radius: 5px;
-  margin: 8px 0;
-  transition: background 0.3s ease, transform 0.2s ease;
-  cursor: pointer;
-  border: none;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-	
-	ul {
-  list-style-type: none;
-  padding: 0;
-  font-size: 16px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-
-
-    .button i {
-      margin-right: 8px;
+      display: block;
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #0056b3;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 8px 0;
+      transition: background 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+      box-sizing: border-box;
     }
+
+    .button i { margin-right: 8px; }
 
     .button:hover {
       background-color: #004090;
       transform: scale(1.05);
     }
 
-	
     .btn-hijau {
       background-color: #2e7d32;
     }
@@ -130,7 +102,6 @@
       background-color: #1b5e20;
     }
 
-    /* Khusus tombol Rencana (merah bata) */
     .btn-rencana {
       background-color: #B22222;
     }
@@ -153,14 +124,8 @@
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     input[type="password"] {
@@ -171,106 +136,141 @@
     }
 
     @media (max-width: 600px) {
-      .container {
-        width: 90%;
-        padding: 15px;
-      }
-      .button {
-        display: block;
-        width: auto;
-        text-align: center;
-      }
+      .container { width: 90%; padding: 15px; }
+      .button { display: block; width: auto; text-align: center; }
     }
   </style>
 </head>
 <body>
-  <img src="https://logotyp.us/file/bri.svg" alt="Watermark BRI" class="watermark" />
-  <div class="container">
-    <img src="https://logotyp.us/file/bri.svg" alt="Logo BRI" width="150" />
-    <h1>DASHBOARD DATA MBAM</h1>
-    <p>Pilih data yang tersedia:</p>
-    <ul>
-      <li>
-        <button class="button btn-rencana" onclick="togglePassword('sectionRencana')">
-          <i class="fas fa-lock"></i> RENCANA AKTIVITAS HARIAN MBM
-        </button>
-        <div id="sectionRencana" class="password-section">
-          <input type="password" id="passwordRencana" placeholder="🔒 Masukkan password untuk membuka data" />
-          <br />
-          <button class="button btn-rencana" onclick="checkPassword('passwordRencana', 'https://docs.google.com/spreadsheets/d/1lwJoXxiNvkrsZpNQP92Ei7APFApLjNsvav-DwRl09e0/edit?usp=sharing', 'RENCANA')">
-            <i class="fas fa-unlock"></i> Akses
-          </button>
-        </div>
-      </li>
-	   <li>
-        <a class="button btn-hijau" href="https://docs.google.com/spreadsheets/d/1w8tm5hG9OSH2VcG0OMV4SsM2-Vd2RFLN/edit?usp=sharing&ouid=103240218599301318997&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-folder-open"></i> NEW SML 30 APRIL 2025
-        </a>
-      </li>
-	    <li>
-        <a class="button btn-hijau" href="https://drive.google.com/drive/folders/1BPcIhQYu6so-Cblv3rqVAfVM-9UfaUzG?usp=sharing" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-folder-open"></i> CNPL JUNI 2025
-         </a>
-      </li>
-      <li>
-	  <li>
-        <a class="button btn-hijau" href="https://drive.google.com/drive/folders/1IGdfFILcP2OY-mzSqiUla5jaeSaA6Y_k?usp=sharing" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-folder-open"></i> TUNGGAKAN KECIL HARIAN
-        </a>
-      </li>
-      <li>
-        <a class="button btn-hijau" href="https://drive.google.com/drive/folders/1afaQfubqqdPG0TdEyJ-xjpcEoSme8ubS?usp=sharing" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-folder-open"></i> TUNGGAKAN PUNYA SIMPANAN HARIAN
-        </a>
-      </li>
-	   <li>
-        <a class="button" href="https://drive.google.com/drive/folders/1z1XGE1cCFN6mqYSYq6rtxwjo3Mf1-Jsy?usp=sharing" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-folder-open"></i> KINERJA HARIAN WILAYAH MBAM 2025
-        </a>
-      </li>
-	   <li>
-        <a class="button" href="https://drive.google.com/drive/folders/1T7yqShzeR2pT5B9RY5b7M82GPAjjuUcp?usp=sharing" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-folder-open"></i> LW321 321 2025
-        </a>
-      </li>
-      <li>
-        <a class="button" href="https://drive.google.com/drive/folders/1C_tI21dqTYKMoqYASEme2g1tQQGE9gy9?usp=sharing" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-file-alt"></i> DATA KEKURANGAN KLAIM APRIL 2025
-        </a>
-      </li>
-      <li>
-        <a class="button" href="https://docs.google.com/spreadsheets/d/14Q-bROP3zaV44BUpWpWp7O7Wfw80AyW0/edit?usp=sharing&ouid=103240218599301318997&rtpof=true&sd=true">
-          <i class="fas fa-folder-open"></i> PIPELINE EKSPANSI UPDATE 12 MEI 2025
-        </a>
-      </li>
-      
-      <li>
-        <a class="button" href="https://drive.google.com/drive/folders/1i1yVbQAUfF8TLB9ZQXLMS0ECJWg3-ljG?usp=sharing" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-folder-open"></i> DATA PINJAMAN BELUM AGF & AFT
-        </a>
-      </li>
-      <li>
-        <button class="button" onclick="togglePassword('sectionMantri')">
-          <i class="fas fa-lock"></i> DATA MANTRI BELUM REAL
-        </button>
-        <div id="sectionMantri" class="password-section">
-          <input type="password" id="passwordMantri" placeholder="🔒 Masukkan password untuk membuka data" />
-          <br />
-          <button class="button" onclick="checkPassword('passwordMantri', 'https://docs.google.com/spreadsheets/d/14WmhLXjf01rYnEBeiTBrUI0QfD389ie_Fqp20wekXdk/edit?usp=sharing', 'MANTRI')">
-            <i class="fas fa-unlock"></i> Akses
-          </button>
-        </div>
-      </li>
-	    <li>
-        <a class="button" href="https://drive.google.com/drive/folders/1FwuViuEO9vYp910_vBjOIBj826oP4j3f?usp=sharing">
-          <i class="fas fa-folder-open"></i> MATERI & KETENTUAN
-        </a>
-      </li>
-    </ul>
-    <p class="footer">⚠️ Perhatian: Data ini bersifat INTERNAL dan tidak untuk dibagikan ke pihak luar.</p>
+  <!-- Login Section -->
+  <div id="loginContainer" class="container">
+    <img src="https://logotyp.us/file/bri.svg" alt="Logo BRI" width="120" />
+    <h2>Login Dashboard</h2>
+    <p>Masukkan password untuk mengakses halaman:</p>
+    <input type="password" id="loginPassword" placeholder="🔒 Password" />
+    <br /><br />
+    <button onclick="login()" class="button" style="width:auto;">
+      <i class="fas fa-sign-in-alt"></i> Login
+    </button>
   </div>
 
+  <!-- Main Content -->
+  <div id="mainContent" style="display:none;">
+    <img src="https://logotyp.us/file/bri.svg" alt="Watermark BRI" class="watermark" />
+    <div class="container">
+      <img src="https://logotyp.us/file/bri.svg" alt="Logo BRI" width="150" />
+      <h1>DASHBOARD DATA MBAM</h1>
+      <p>Pilih data yang tersedia:</p>
+      <ul>
+        <li>
+          <button class="button btn-rencana" onclick="togglePassword('sectionRencana')">
+            <i class="fas fa-lock"></i> RENCANA AKTIVITAS HARIAN MBM
+          </button>
+          <div id="sectionRencana" class="password-section">
+            <input type="password" id="passwordRencana" placeholder="🔒 Masukkan password untuk membuka data" />
+            <br />
+            <button class="button btn-rencana" onclick="checkPassword('passwordRencana', 'https://docs.google.com/spreadsheets/d/1lwJoXxiNvkrsZpNQP92Ei7APFApLjNsvav-DwRl09e0/edit?usp=sharing', 'RENCANA')">
+              <i class="fas fa-unlock"></i> Akses
+            </button>
+          </div>
+        </li>
+        <li>
+          <a class="button btn-hijau" href="https://docs.google.com/spreadsheets/d/1w8tm5hG9OSH2VcG0OMV4SsM2-Vd2RFLN/edit?usp=sharing" target="_blank">
+            <i class="fas fa-folder-open"></i> NEW SML 30 APRIL 2025
+          </a>
+        </li>
+        <li>
+          <a class="button btn-hijau" href="https://drive.google.com/drive/folders/1BPcIhQYu6so-Cblv3rqVAfVM-9UfaUzG?usp=sharing" target="_blank">
+            <i class="fas fa-folder-open"></i> CNPL JUNI 2025
+          </a>
+        </li>
+        <li>
+          <a class="button btn-hijau" href="https://drive.google.com/drive/folders/1IGdfFILcP2OY-mzSqiUla5jaeSaA6Y_k?usp=sharing" target="_blank">
+            <i class="fas fa-folder-open"></i> TUNGGAKAN KECIL HARIAN
+          </a>
+        </li>
+        <li>
+          <a class="button btn-hijau" href="https://drive.google.com/drive/folders/1afaQfubqqdPG0TdEyJ-xjpcEoSme8ubS?usp=sharing" target="_blank">
+            <i class="fas fa-folder-open"></i> TUNGGAKAN PUNYA SIMPANAN HARIAN
+          </a>
+        </li>
+        <li>
+          <a class="button" href="https://drive.google.com/drive/folders/1z1XGE1cCFN6mqYSYq6rtxwjo3Mf1-Jsy?usp=sharing" target="_blank">
+            <i class="fas fa-folder-open"></i> KINERJA HARIAN WILAYAH MBAM 2025
+          </a>
+        </li>
+        <li>
+          <a class="button" href="https://drive.google.com/drive/folders/1T7yqShzeR2pT5B9RY5b7M82GPAjjuUcp?usp=sharing" target="_blank">
+            <i class="fas fa-folder-open"></i> LW321 321 2025
+          </a>
+        </li>
+        <li>
+          <a class="button" href="https://drive.google.com/drive/folders/1C_tI21dqTYKMoqYASEme2g1tQQGE9gy9?usp=sharing" target="_blank">
+            <i class="fas fa-file-alt"></i> DATA KEKURANGAN KLAIM APRIL 2025
+          </a>
+        </li>
+        <li>
+          <a class="button" href="https://docs.google.com/spreadsheets/d/14Q-bROP3zaV44BUpWpWp7O7Wfw80AyW0/edit?usp=sharing">
+            <i class="fas fa-folder-open"></i> PIPELINE EKSPANSI UPDATE 12 MEI 2025
+          </a>
+        </li>
+        <li>
+          <a class="button" href="https://drive.google.com/drive/folders/1i1yVbQAUfF8TLB9ZQXLMS0ECJWg3-ljG?usp=sharing" target="_blank">
+            <i class="fas fa-folder-open"></i> DATA PINJAMAN BELUM AGF & AFT
+          </a>
+        </li>
+        <li>
+          <button class="button" onclick="togglePassword('sectionMantri')">
+            <i class="fas fa-lock"></i> DATA MANTRI BELUM REAL
+          </button>
+          <div id="sectionMantri" class="password-section">
+            <input type="password" id="passwordMantri" placeholder="🔒 Masukkan password untuk membuka data" />
+            <br />
+            <button class="button" onclick="checkPassword('passwordMantri', 'https://docs.google.com/spreadsheets/d/14WmhLXjf01rYnEBeiTBrUI0QfD389ie_Fqp20wekXdk/edit?usp=sharing', 'MANTRI')">
+              <i class="fas fa-unlock"></i> Akses
+            </button>
+          </div>
+        </li>
+        <li>
+          <a class="button" href="https://drive.google.com/drive/folders/1FwuViuEO9vYp910_vBjOIBj826oP4j3f?usp=sharing">
+            <i class="fas fa-folder-open"></i> MATERI & KETENTUAN
+          </a>
+        </li>
+      </ul>
+      <p class="footer">⚠️ Perhatian: Data ini bersifat INTERNAL dan tidak untuk dibagikan ke pihak luar.</p>
+    </div>
+
+    <footer style="text-align:center; margin-top:20px;">
+      <p>
+        Pengunjung total: <span id="busuanzi_value_site_pv"></span> |
+        Online sekarang: <span id="busuanzi_value_site_uv"></span>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Script Sekali Jalan -->
   <script>
+    // Login utama
+    const loginPassword = "mbam2025";
+    window.onload = function () {
+      if (sessionStorage.getItem("loggedIn")) {
+        document.getElementById("loginContainer").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+      }
+    };
+
+    function login() {
+      const userInput = document.getElementById("loginPassword").value;
+      if (userInput === loginPassword) {
+        sessionStorage.setItem("loggedIn", true);
+        document.getElementById("loginContainer").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+      } else {
+        alert("❌ Password salah.");
+      }
+    }
+
+    // Toggle dan verifikasi password per bagian
     function togglePassword(sectionId) {
       const section = document.getElementById(sectionId);
       section.style.display = section.style.display === 'block' ? 'none' : 'block';
@@ -285,7 +285,6 @@
         MANTRI: "MBAM",
         RENCANA: "MBAM"
       };
-
       if (input === passwords[label]) {
         alert("✅ Password benar. Membuka data...");
         window.open(link, '_blank');
@@ -295,13 +294,5 @@
       }
     }
   </script>
-  
- <footer style="text-align:center; margin-top:20px;">
-  <p>
-    Pengunjung total: <span id="busuanzi_value_site_pv"></span> |
-    Online sekarang: <span id="busuanzi_value_site_uv"></span>
-  </p>
-</footer>
 </body>
 </html>
-
