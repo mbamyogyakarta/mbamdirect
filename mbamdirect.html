@@ -19,7 +19,6 @@
       font-size: 16px;
       transition: background 0.5s, color 0.5s;
     }
-
     body::before,
     body::after {
       content: '';
@@ -31,7 +30,6 @@
       border-radius: 50%;
       z-index: 0;
     }
-
     body::before { top: -100px; left: -100px; }
     body::after { bottom: -100px; right: -100px; }
 
@@ -94,21 +92,11 @@
       transform: scale(1.05);
     }
 
-    .btn-hijau {
-      background-color: #2e7d32;
-    }
+    .btn-hijau { background-color: #2e7d32; }
+    .btn-hijau:hover { background-color: #1b5e20; }
 
-    .btn-hijau:hover {
-      background-color: #1b5e20;
-    }
-
-    .btn-rencana {
-      background-color: #B22222;
-    }
-
-    .btn-rencana:hover {
-      background-color: #8B1A1A;
-    }
+    .btn-rencana { background-color: #B22222; }
+    .btn-rencana:hover { background-color: #8B1A1A; }
 
     .footer {
       margin-top: 20px;
@@ -133,6 +121,15 @@
       width: 80%;
       font-size: 16px;
       margin-top: 10px;
+    }
+
+    .logout-btn {
+      margin-top: 20px;
+      background-color: #444;
+    }
+
+    .logout-btn:hover {
+      background-color: #222;
     }
 
     @media (max-width: 600px) {
@@ -167,9 +164,9 @@
             <i class="fas fa-lock"></i> RENCANA AKTIVITAS HARIAN MBM
           </button>
           <div id="sectionRencana" class="password-section">
-            <input type="password" id="passwordRencana" placeholder="🔒 Masukkan password untuk membuka data" />
+            <input type="password" placeholder="🔒 Masukkan password untuk membuka data" />
             <br />
-            <button class="button btn-rencana" onclick="checkPassword('passwordRencana', 'https://docs.google.com/spreadsheets/d/1lwJoXxiNvkrsZpNQP92Ei7APFApLjNsvav-DwRl09e0/edit?usp=sharing', 'RENCANA')">
+            <button class="button btn-rencana" onclick="checkPassword('sectionRencana', 'https://docs.google.com/spreadsheets/d/1lwJoXxiNvkrsZpNQP92Ei7APFApLjNsvav-DwRl09e0/edit?usp=sharing', 'RENCANA')">
               <i class="fas fa-unlock"></i> Akses
             </button>
           </div>
@@ -224,9 +221,9 @@
             <i class="fas fa-lock"></i> DATA MANTRI BELUM REAL
           </button>
           <div id="sectionMantri" class="password-section">
-            <input type="password" id="passwordMantri" placeholder="🔒 Masukkan password untuk membuka data" />
+            <input type="password" placeholder="🔒 Masukkan password untuk membuka data" />
             <br />
-            <button class="button" onclick="checkPassword('passwordMantri', 'https://docs.google.com/spreadsheets/d/14WmhLXjf01rYnEBeiTBrUI0QfD389ie_Fqp20wekXdk/edit?usp=sharing', 'MANTRI')">
+            <button class="button" onclick="checkPassword('sectionMantri', 'https://docs.google.com/spreadsheets/d/14WmhLXjf01rYnEBeiTBrUI0QfD389ie_Fqp20wekXdk/edit?usp=sharing', 'MANTRI')">
               <i class="fas fa-unlock"></i> Akses
             </button>
           </div>
@@ -238,8 +235,8 @@
         </li>
       </ul>
       <p class="footer">⚠️ Perhatian: Data ini bersifat INTERNAL dan tidak untuk dibagikan ke pihak luar.</p>
+      <button class="button logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
     </div>
-
     <footer style="text-align:center; margin-top:20px;">
       <p>
         Pengunjung total: <span id="busuanzi_value_site_pv"></span> |
@@ -248,10 +245,13 @@
     </footer>
   </div>
 
-  <!-- Script Sekali Jalan -->
   <script>
-    // Login utama
     const loginPassword = "mbam2025";
+    const passwords = {
+      MANTRI: "MBAM",
+      RENCANA: "MBAM"
+    };
+
     window.onload = function () {
       if (sessionStorage.getItem("loggedIn")) {
         document.getElementById("loginContainer").style.display = "none";
@@ -270,27 +270,31 @@
       }
     }
 
-    // Toggle dan verifikasi password per bagian
+    function logout() {
+      sessionStorage.removeItem("loggedIn");
+      location.reload();
+    }
+
     function togglePassword(sectionId) {
       const section = document.getElementById(sectionId);
-      section.style.display = section.style.display === 'block' ? 'none' : 'block';
-      if (section.style.display === 'block') {
-        section.querySelector('input[type="password"]').focus();
+      const isVisible = section.style.display === "block";
+      section.style.display = isVisible ? "none" : "block";
+      if (!isVisible) {
+        const input = section.querySelector('input[type="password"]');
+        if (input) input.focus();
       }
     }
 
-    function checkPassword(inputId, link, label) {
-      const input = document.getElementById(inputId).value;
-      const passwords = {
-        MANTRI: "MBAM",
-        RENCANA: "MBAM"
-      };
+    function checkPassword(sectionId, link, label) {
+      const inputField = document.querySelector(`#${sectionId} input[type="password"]`);
+      const input = inputField.value;
       if (input === passwords[label]) {
         alert("✅ Password benar. Membuka data...");
         window.open(link, '_blank');
       } else {
         alert("❌ Password salah. Silakan coba lagi.");
-        document.getElementById(inputId).value = '';
+        inputField.value = '';
+        inputField.focus();
       }
     }
   </script>
